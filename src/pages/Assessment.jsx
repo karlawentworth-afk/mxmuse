@@ -14,7 +14,20 @@ import InfoForm from '../components/assessment/InfoForm';
 const questions = questionData.questions;
 const sectionBreaks = questionData.sectionBreaks;
 
-// Generate stable shuffle orders for select questions (one per session)
+// Subtle background tints that shift through the assessment journey
+const QUESTION_TINTS = {
+  // Q1-6: warm (storyteller territory)
+  1: '#FAFAF8', 2: '#FAFAF8', 3: '#FAFAF8', 4: '#FAFAF8', 5: '#FAFAF8', 6: '#FAFAF8',
+  // Q7-12: cool (strategist territory)
+  7: '#F8F9FB', 8: '#F8F9FB', 9: '#F8F9FB', 10: '#F8F9FB', 11: '#F8F9FB', 12: '#F8F9FB',
+  // Q13-18: violet (scientist territory)
+  13: '#FAF8FC', 14: '#FAF8FC', 15: '#FAF8FC', 16: '#FAF8FC', 17: '#FAF8FC', 18: '#FAF8FC',
+  // Q19-24: teal (builder territory)
+  19: '#F7FBFA', 20: '#F7FBFA', 21: '#F7FBFA', 22: '#F7FBFA', 23: '#F7FBFA', 24: '#F7FBFA',
+  // Q25-30: neutral (role demand)
+  25: '#F9F9F7', 26: '#F9F9F7', 27: '#F9F9F7', 28: '#F9F9F7', 29: '#F9F9F7', 30: '#F9F9F7',
+};
+
 function generateShuffleOrders() {
   const orders = {};
   questions.forEach(q => {
@@ -40,14 +53,11 @@ export default function Assessment() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
 
-  // Stable shuffle orders for select questions, generated once per session
   const shuffleOrders = useMemo(() => generateShuffleOrders(), []);
 
-  // Capture referral params from URL
   const refSource = searchParams.get('ref') || null;
   const referredBy = searchParams.get('from') || null;
 
-  // Scroll to top on question change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentQuestion, showSectionBreak, showInfoForm]);
@@ -85,7 +95,6 @@ export default function Assessment() {
   function handleNext() {
     if (!isAnswerValid()) return;
 
-    // Check if we need to show a section break after this question
     if (sectionBreaks[String(currentQuestion)]) {
       setShowSectionBreak(true);
       return;
@@ -146,7 +155,6 @@ export default function Assessment() {
       };
 
       if (!supabase) {
-        // No Supabase configured, generate a fake ID for development
         console.warn('Supabase not configured. Results not saved.');
         navigate(`/results/dev-${Date.now()}`);
         return;
@@ -171,21 +179,17 @@ export default function Assessment() {
   // Section break screen
   if (showSectionBreak) {
     return (
-      <div className="min-h-screen bg-off-white flex flex-col">
-        <div className="max-w-2xl mx-auto w-full px-6 pt-8">
-          <ProgressBar current={currentQuestion} total={30} />
-        </div>
-        <div className="flex-1 flex items-center">
-          <SectionBreak
-            text={sectionBreaks[String(currentQuestion)]}
-            onContinue={handleSectionBreakContinue}
-          />
-        </div>
+      <div className="min-h-screen flex flex-col">
+        <SectionBreak
+          text={sectionBreaks[String(currentQuestion)]}
+          onContinue={handleSectionBreakContinue}
+          questionNumber={currentQuestion}
+        />
       </div>
     );
   }
 
-  // Info form screen (after question 30)
+  // Info form screen
   if (showInfoForm) {
     return (
       <div className="min-h-screen bg-off-white flex flex-col">
@@ -211,14 +215,19 @@ export default function Assessment() {
   }
 
   // Question screen
+  const bgTint = QUESTION_TINTS[currentQuestion] || '#FAFAF8';
+
   return (
-    <div className="min-h-screen bg-off-white flex flex-col">
+    <div
+      className="min-h-screen flex flex-col transition-colors duration-700"
+      style={{ backgroundColor: bgTint }}
+    >
       <div className="max-w-2xl mx-auto w-full px-6 pt-8">
         <ProgressBar current={currentQuestion} total={30} />
       </div>
 
-      <div className="flex-1 max-w-2xl mx-auto w-full px-6 py-10">
-        <h2 className="text-xl md:text-2xl font-heading font-semibold text-near-black mb-8 leading-snug">
+      <div className="flex-1 max-w-2xl mx-auto w-full px-6 py-10 md:py-14">
+        <h2 className="text-2xl md:text-3xl lg:text-[2.25rem] font-heading font-semibold text-near-black mb-10 md:mb-12 leading-snug">
           {question.text}
         </h2>
 
@@ -256,7 +265,7 @@ export default function Assessment() {
         )}
 
         {/* Navigation */}
-        <div className="flex justify-between items-center mt-10 pt-6 border-t border-warm-gray">
+        <div className="flex justify-between items-center mt-12 pt-6 border-t border-warm-gray/50">
           <button
             onClick={handleBack}
             disabled={currentQuestion === 1}
@@ -272,9 +281,9 @@ export default function Assessment() {
           <button
             onClick={handleNext}
             disabled={!isAnswerValid()}
-            className={`px-6 py-2.5 rounded-lg font-medium text-sm transition-colors ${
+            className={`px-8 py-3 rounded-lg font-medium transition-all duration-200 ${
               isAnswerValid()
-                ? 'bg-muse-teal text-white hover:bg-muse-teal-dark'
+                ? 'bg-muse-teal text-white hover:bg-muse-teal-dark shadow-sm'
                 : 'bg-warm-gray text-mid-gray cursor-not-allowed'
             }`}
           >

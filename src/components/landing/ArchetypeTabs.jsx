@@ -5,6 +5,8 @@ const ARCHETYPES = [
     key: 'storyteller',
     name: 'Storyteller',
     hex: '#C4553A',
+    hexLight: '#C4553A0A',
+    hexMedium: '#C4553A18',
     strapline: "It's 2pm and you haven't created a single thing today.",
     howFeels:
       "You opened your laptop this morning ready to write. Eight hours later you've approved a template, updated a spreadsheet, and sat through two calls about 'brand consistency' that had nothing to do with actual storytelling. The words are still inside you. They just never made it to the page.",
@@ -21,6 +23,8 @@ const ARCHETYPES = [
     key: 'strategist',
     name: 'Strategist',
     hex: '#2C3E6B',
+    hexLight: '#2C3E6B0A',
+    hexMedium: '#2C3E6B18',
     strapline: 'Another day, another reactive firefight.',
     howFeels:
       "You had a plan for this quarter. It was good. Clear objectives, sensible sequencing, measurable outcomes. That was six weeks ago. Since then you've pivoted twice, absorbed two 'urgent' requests from sales, and spent most of your time justifying the strategy rather than executing it.",
@@ -37,6 +41,8 @@ const ARCHETYPES = [
     key: 'scientist',
     name: 'Scientist',
     hex: '#7B4DAA',
+    hexLight: '#7B4DAA0A',
+    hexMedium: '#7B4DAA18',
     strapline: 'Decisions getting made without a shred of data.',
     howFeels:
       "You built the dashboard. You ran the analysis. You found the insight that should change how the team allocates budget next quarter. It's sitting in a slide deck that nobody's opened. Meanwhile, someone just made a six-figure campaign decision based on a hunch and a competitor screenshot.",
@@ -53,6 +59,8 @@ const ARCHETYPES = [
     key: 'builder',
     name: 'Builder',
     hex: '#2A9D8F',
+    hexLight: '#2A9D8F0A',
+    hexMedium: '#2A9D8F18',
     strapline: 'Everyone wants the thing shipped. No one wants to build it.',
     howFeels:
       "The automation broke again. The CMS update created a formatting issue on mobile. Someone needs the landing page changed before tomorrow's launch. You fix all of it. Quickly, competently, invisibly. Nobody notices when it works. Everyone notices when it doesn't.",
@@ -73,115 +81,152 @@ export default function ArchetypeTabs() {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <section className="max-w-4xl mx-auto px-6 py-16">
+    <section className="py-16 md:py-24">
       {/* Tab bar */}
-      <div className="flex gap-1 border-b border-warm-gray" role="tablist">
-        {ARCHETYPES.map((a) => (
-          <button
-            key={a.key}
-            role="tab"
-            aria-selected={active === a.key}
-            onClick={() => {
-              setActive(a.key)
-              setExpanded(false)
-            }}
-            className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 -mb-px ${
-              active === a.key
-                ? 'border-current'
-                : 'border-transparent text-mid-gray hover:text-near-black'
-            }`}
-            style={active === a.key ? { color: a.hex, borderColor: a.hex } : undefined}
-          >
-            {a.name}
-          </button>
-        ))}
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="flex" role="tablist">
+          {ARCHETYPES.map((a) => {
+            const isActive = active === a.key;
+            return (
+              <button
+                key={a.key}
+                role="tab"
+                aria-selected={isActive}
+                onClick={() => {
+                  setActive(a.key)
+                  setExpanded(false)
+                }}
+                className={`flex-1 py-4 md:py-5 text-sm md:text-base font-semibold tracking-wide uppercase transition-all duration-300 ${
+                  isActive ? 'text-white' : 'text-mid-gray hover:text-near-black bg-off-white'
+                }`}
+                style={isActive ? {
+                  backgroundColor: a.hex,
+                  color: 'white'
+                } : undefined}
+              >
+                {a.name}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Panel */}
-      <div className="pt-10" role="tabpanel" aria-label={archetype.name}>
-        <h2
-          className="text-2xl md:text-3xl font-heading font-semibold"
-          style={{ color: archetype.hex }}
-        >
-          {archetype.name}
-        </h2>
-
-        <p className="text-lg font-medium text-near-black mt-2 mb-10">
-          {archetype.strapline}
-        </p>
-
-        {/* HOW THAT DAY FEELS */}
-        <div
-          className="border-l-4 rounded-r-lg p-6 mb-10"
-          style={{
-            borderColor: archetype.hex,
-            backgroundColor: `${archetype.hex}08`,
-          }}
-        >
-          <p className="text-xs font-semibold tracking-widest text-mid-gray uppercase mb-3">
-            How that day feels
-          </p>
-          <p className="text-near-black leading-relaxed italic">
-            {archetype.howFeels}
-          </p>
-        </div>
-
-        {/* WHAT THEY ACTUALLY DO */}
-        <div className="mb-10">
-          <p className="text-xs font-semibold tracking-widest text-mid-gray uppercase mb-3">
-            What they actually do
-          </p>
-          <p className="text-near-black leading-relaxed">
-            {archetype.whatTheyDo}
-          </p>
-        </div>
-
-        {/* WHAT THEY SAY TO COLLEAGUES */}
-        <div
-          className="border-l-4 rounded-r-lg p-6 mb-10"
-          style={{
-            borderColor: archetype.hex,
-            backgroundColor: `${archetype.hex}08`,
-          }}
-        >
-          <p className="text-xs font-semibold tracking-widest text-mid-gray uppercase mb-3">
-            What they say to colleagues
-          </p>
-          <p className="text-near-black leading-relaxed italic">
-            {archetype.whatTheySay}
-          </p>
-        </div>
-
-        {/* WHY THIS MATTERS */}
-        <div className="mb-10">
-          <p className="text-xs font-semibold tracking-widest text-mid-gray uppercase mb-3">
-            Why this matters
-          </p>
-          <p className="text-near-black leading-relaxed">
-            {archetype.whyMatters}
-          </p>
-        </div>
-
-        {/* THE HIDDEN COST */}
-        <div className="border-t border-warm-gray pt-5">
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-2 text-sm font-semibold tracking-widest text-mid-gray uppercase hover:text-near-black transition-colors w-full text-left"
-            aria-expanded={expanded}
+      {/* Panel with full colour wash */}
+      <div
+        className="transition-colors duration-500"
+        style={{ backgroundColor: archetype.hexMedium }}
+        role="tabpanel"
+        aria-label={archetype.name}
+      >
+        <div className="max-w-4xl mx-auto px-6 py-12 md:py-16">
+          {/* Archetype name as large editorial headline */}
+          <h2
+            className="text-4xl md:text-6xl font-heading font-semibold leading-none"
+            style={{ color: archetype.hex }}
           >
-            <span
-              className={`inline-block transition-transform duration-200 ${expanded ? 'rotate-90' : ''}`}
-              aria-hidden="true"
+            {archetype.name}
+          </h2>
+
+          <p className="text-lg md:text-xl font-medium text-near-black mt-3 mb-12 md:mb-16">
+            {archetype.strapline}
+          </p>
+
+          {/* Divider in archetype colour */}
+          <div className="h-0.5 w-16 mb-10" style={{ backgroundColor: archetype.hex }} />
+
+          {/* HOW THAT DAY FEELS */}
+          <div
+            className="rounded-lg p-6 md:p-8 mb-10"
+            style={{ backgroundColor: `${archetype.hex}10` }}
+          >
+            <p
+              className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
+              style={{ color: archetype.hex }}
             >
-              ›
-            </span>
-            The hidden cost no one talks about
-          </button>
-          {expanded && (
-            <p className="mt-5 text-near-black leading-relaxed">
-              {archetype.hiddenCost}
+              How that day feels
             </p>
-          )}
+            <p className="text-near-black leading-relaxed text-lg italic">
+              {archetype.howFeels}
+            </p>
+          </div>
+
+          {/* WHAT THEY ACTUALLY DO */}
+          <div className="mb-10">
+            <p
+              className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
+              style={{ color: archetype.hex }}
+            >
+              What they actually do
+            </p>
+            <p className="text-near-black leading-relaxed text-lg">
+              {archetype.whatTheyDo}
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div className="h-0.5 w-16 mb-10" style={{ backgroundColor: archetype.hex, opacity: 0.3 }} />
+
+          {/* WHAT THEY SAY TO COLLEAGUES */}
+          <div
+            className="rounded-lg p-6 md:p-8 mb-10"
+            style={{ backgroundColor: `${archetype.hex}10` }}
+          >
+            <p
+              className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
+              style={{ color: archetype.hex }}
+            >
+              What they say to colleagues
+            </p>
+            <p className="text-near-black leading-relaxed text-lg italic">
+              {archetype.whatTheySay}
+            </p>
+          </div>
+
+          {/* WHY THIS MATTERS */}
+          <div className="mb-10">
+            <p
+              className="text-xs font-bold tracking-[0.2em] uppercase mb-4"
+              style={{ color: archetype.hex }}
+            >
+              Why this matters
+            </p>
+            <p className="text-near-black leading-relaxed text-lg">
+              {archetype.whyMatters}
+            </p>
+          </div>
+
+          {/* THE HIDDEN COST */}
+          <div
+            className="rounded-lg overflow-hidden"
+            style={{ backgroundColor: `${archetype.hex}10` }}
+          >
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="flex items-center justify-between w-full text-left p-6 md:p-8 transition-colors"
+              aria-expanded={expanded}
+            >
+              <span
+                className="text-xs font-bold tracking-[0.2em] uppercase"
+                style={{ color: archetype.hex }}
+              >
+                The hidden cost no one talks about
+              </span>
+              <span
+                className="text-xl font-light transition-transform duration-200"
+                style={{ color: archetype.hex, transform: expanded ? 'rotate(45deg)' : 'none' }}
+                aria-hidden="true"
+              >
+                +
+              </span>
+            </button>
+            {expanded && (
+              <div className="px-6 md:px-8 pb-6 md:pb-8">
+                <p className="text-near-black leading-relaxed text-lg">
+                  {archetype.hiddenCost}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -10,9 +10,6 @@ function shuffle(array) {
 }
 
 export default function SelectQuestion({ question, value, onChange, shuffleOrder }) {
-  // Shuffle options once per question render using a stable seed per question number.
-  // shuffleOrder is an array of indices passed from parent to keep order stable
-  // across re-renders but randomised per session.
   const orderedOptions = useMemo(() => {
     if (shuffleOrder) {
       return shuffleOrder.map(i => question.options[i]);
@@ -28,13 +25,17 @@ export default function SelectQuestion({ question, value, onChange, shuffleOrder
           <button
             key={option.archetype}
             onClick={() => onChange(option.archetype)}
-            className={`w-full text-left p-4 rounded-lg border transition-colors ${
+            className={`w-full text-left p-5 md:p-6 rounded-xl border-2 transition-all duration-200 ${
               isSelected
-                ? 'border-muse-teal bg-muse-teal/5 text-near-black'
-                : 'border-warm-gray bg-white text-near-black hover:border-mid-gray'
+                ? 'border-muse-teal bg-muse-teal/5 shadow-sm'
+                : 'border-warm-gray bg-white hover:border-mid-gray hover:shadow-sm'
             }`}
           >
-            {option.text}
+            <span className={`text-base md:text-lg leading-relaxed ${
+              isSelected ? 'text-near-black font-medium' : 'text-near-black'
+            }`}>
+              {option.text}
+            </span>
           </button>
         );
       })}

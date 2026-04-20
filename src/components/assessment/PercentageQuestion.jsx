@@ -1,6 +1,4 @@
 export default function PercentageQuestion({ question, value, onChange }) {
-  // Same UI as points but labelled as percentages.
-  // value shape: { storyteller: 40, strategist: 20, scientist: 10, builder: 30 } or null
   const currentValues = value || {
     storyteller: 0,
     strategist: 0,
@@ -13,9 +11,7 @@ export default function PercentageQuestion({ question, value, onChange }) {
 
   function handleChange(archetype, rawValue) {
     const numValue = rawValue === '' ? 0 : parseInt(rawValue, 10);
-    if (isNaN(numValue) || numValue < 0) return;
-    if (numValue > 100) return;
-
+    if (isNaN(numValue) || numValue < 0 || numValue > 100) return;
     const updated = { ...currentValues, [archetype]: numValue };
     onChange(updated);
   }
@@ -27,29 +23,38 @@ export default function PercentageQuestion({ question, value, onChange }) {
         const pct = currentValues[archetype];
 
         return (
-          <div key={archetype} className="flex gap-3 items-start">
-            <div className="shrink-0 pt-1 flex items-center gap-1">
+          <div
+            key={archetype}
+            className={`p-5 md:p-6 rounded-xl border-2 transition-all duration-200 ${
+              pct > 0
+                ? 'border-muse-teal/30 bg-muse-teal/5'
+                : 'border-warm-gray bg-white'
+            }`}
+          >
+            <p className="text-base md:text-lg text-near-black leading-relaxed mb-3">
+              {option.text}
+            </p>
+            <div className="flex items-center gap-1.5">
               <input
                 type="number"
                 min="0"
                 max="100"
                 value={pct || ''}
                 onChange={(e) => handleChange(archetype, e.target.value)}
-                className="w-16 h-9 text-center text-sm border border-warm-gray rounded-md bg-white text-near-black focus:outline-none focus:border-muse-teal tabular-nums"
+                className="w-20 h-10 text-center text-base font-semibold border-2 border-warm-gray rounded-lg bg-white text-near-black focus:outline-none focus:border-muse-teal tabular-nums"
                 placeholder="0"
               />
-              <span className="text-sm text-mid-gray">%</span>
+              <span className="text-base text-mid-gray font-medium">%</span>
             </div>
-            <p className="text-near-black leading-relaxed pt-1.5">{option.text}</p>
           </div>
         );
       })}
-      <div className={`text-sm font-medium tabular-nums ${
+      <div className={`text-base font-semibold tabular-nums pt-2 ${
         total === 100 ? 'text-muse-teal' : total > 100 ? 'text-storyteller' : 'text-mid-gray'
       }`}>
-        {total}% allocated
-        {remaining > 0 && ` (${remaining}% remaining)`}
-        {total > 100 && ' (over 100%)'}
+        {total === 100 ? '100% allocated' :
+         total > 100 ? `${total}% (over 100%)` :
+         `${total}% (${remaining}% remaining)`}
       </div>
     </div>
   );

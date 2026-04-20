@@ -63,7 +63,7 @@ export default function ConceptViz() {
 
         <p className="mt-8 text-center text-mid-gray text-sm leading-relaxed max-w-lg mx-auto">
           This person's role demands the opposite of what they're built for.
-          They're not failing — they're displaced.
+          They're not failing. They're displaced.
         </p>
       </div>
     </section>

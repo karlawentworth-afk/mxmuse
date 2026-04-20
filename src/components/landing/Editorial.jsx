@@ -13,7 +13,7 @@ export default function Editorial() {
           people, in a job you applied for because you loved one of them.
         </p>
         <p>
-          MX Muse exists to give you language for what's happening — and a map
+          MX Muse exists to give you language for what's happening. And a map
           for what to do about it.
         </p>
       </div>

@@ -9,7 +9,7 @@ export default function DiagnosticCTA() {
 
       <p className="mt-6 text-lg text-mid-gray leading-relaxed max-w-xl mx-auto">
         30 questions. 10 minutes. No sign-up. You'll get a detailed personal
-        profile showing where your natural talents sit — and where your current
+        profile showing where your natural talents sit, and where your current
         role is costing you.
       </p>
 

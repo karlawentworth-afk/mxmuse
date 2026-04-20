@@ -1,0 +1,341 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "type": "ranking",
+      "text": "It's Monday morning. You have four hours of uninterrupted time. Rank these by what would leave you most energised by lunchtime (1 = most energising, 4 = least):",
+      "options": [
+        { "id": "A", "text": "Writing a campaign narrative that gives people chills", "archetype": "storyteller" },
+        { "id": "B", "text": "Mapping out how to outmanoeuvre your competition over the next 18 months", "archetype": "strategist" },
+        { "id": "C", "text": "Digging into performance data to find the insight everyone else missed", "archetype": "scientist" },
+        { "id": "D", "text": "Getting a chaotic project back on track. Aligning the team, sorting the plan, making it run", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 2,
+      "type": "points",
+      "text": "You have 100 points representing your energy budget for the week. Distribute them based on what genuinely fills your tank, not what you're supposed to say:",
+      "options": [
+        { "id": "A", "text": "Creating content, writing copy, developing brand voice", "archetype": "storyteller" },
+        { "id": "B", "text": "Thinking about strategy, positioning, and competitive moves", "archetype": "strategist" },
+        { "id": "C", "text": "Analysing data, running tests, optimising based on evidence", "archetype": "scientist" },
+        { "id": "D", "text": "Coordinating people, managing projects, making sure things actually get delivered", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 3,
+      "type": "ranking",
+      "text": "You just won an award. Rank these achievements by which would make you most proud (1 = most fulfilling, 4 = least):",
+      "options": [
+        { "id": "A", "text": "Your campaign moved thousands of people emotionally and went viral", "archetype": "storyteller" },
+        { "id": "B", "text": "Your strategic insight completely changed the business trajectory", "archetype": "strategist" },
+        { "id": "C", "text": "Your analysis uncovered the one insight that made everyone say 'of course'", "archetype": "scientist" },
+        { "id": "D", "text": "You rallied a team through an impossible deadline and delivered something brilliant", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 4,
+      "type": "select",
+      "isDrain": true,
+      "text": "Which type of work makes you think 'ugh, not this again' when it lands on your desk?",
+      "options": [
+        { "text": "Anything requiring creative writing or conceptual thinking", "archetype": "storyteller" },
+        { "text": "Big-picture strategic planning without clear next steps", "archetype": "strategist" },
+        { "text": "Spreadsheets, data analysis, or number-crunching", "archetype": "scientist" },
+        { "text": "Chasing people, coordinating timelines, or keeping everyone aligned on what's happening next", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 5,
+      "type": "points",
+      "text": "If you had to bet on where your raw natural talent sits, regardless of what your CV says, distribute 100 points:",
+      "options": [
+        { "id": "A", "text": "Brand storytelling and compelling creative", "archetype": "storyteller" },
+        { "id": "B", "text": "Strategic thinking and market positioning", "archetype": "strategist" },
+        { "id": "C", "text": "Data science and performance optimisation", "archetype": "scientist" },
+        { "id": "D", "text": "Leading execution. Getting the right people doing the right things at the right time", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 6,
+      "type": "points",
+      "text": "If you could restart your career with guaranteed success in any path, where would you put your 100 points?",
+      "options": [
+        { "id": "A", "text": "Becoming a sought-after creative director or brand builder", "archetype": "storyteller" },
+        { "id": "B", "text": "Becoming a trusted strategic advisor to executives", "archetype": "strategist" },
+        { "id": "C", "text": "Becoming a world-class marketing scientist and analyst", "archetype": "scientist" },
+        { "id": "D", "text": "Becoming the person everyone wants running their biggest, most complex projects", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 7,
+      "type": "select",
+      "text": "A competitor launches something new. What's your FIRST instinct?",
+      "options": [
+        { "text": "Check out their messaging. How are they telling the story?", "archetype": "storyteller" },
+        { "text": "Analyse the strategic implications. What market are they going after?", "archetype": "strategist" },
+        { "text": "Look for performance signals. Is it actually working?", "archetype": "scientist" },
+        { "text": "Think about what it took to pull that off. The team, the coordination, the moving parts", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 8,
+      "type": "select",
+      "text": "You're reviewing any piece of marketing work. You FIRST focus on:",
+      "options": [
+        { "text": "Does this message land emotionally? Will people actually care?", "archetype": "storyteller" },
+        { "text": "Is the positioning sharp? How does this differentiate us?", "archetype": "strategist" },
+        { "text": "Do we have data supporting these claims and assumptions?", "archetype": "scientist" },
+        { "text": "Can we actually deliver this? Do we have the right people and resources to make it happen?", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 9,
+      "type": "select",
+      "text": "In team discussions, you're usually the one who:",
+      "options": [
+        { "text": "Brings it back to the customer. What will they feel?", "archetype": "storyteller" },
+        { "text": "Asks the strategic questions. How does this position us?", "archetype": "strategist" },
+        { "text": "Asks for the data. What do the numbers actually show?", "archetype": "scientist" },
+        { "text": "Keeps everyone focused. Who's doing what, by when, and what do they need?", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 10,
+      "type": "select",
+      "text": "When you think about great marketing, you FIRST think about:",
+      "options": [
+        { "text": "Whether it created something that emotionally moved people", "archetype": "storyteller" },
+        { "text": "Whether it achieved a sustainable competitive advantage", "archetype": "strategist" },
+        { "text": "Whether the data proves it drove measurable business impact", "archetype": "scientist" },
+        { "text": "Whether the team behind it delivered brilliantly under pressure", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 11,
+      "type": "select",
+      "text": "You get MOST frustrated when marketing work:",
+      "options": [
+        { "text": "Lacks emotional resonance and feels soulless", "archetype": "storyteller" },
+        { "text": "Has no clear strategic direction or positioning", "archetype": "strategist" },
+        { "text": "Isn't grounded in data or measurement", "archetype": "scientist" },
+        { "text": "Falls apart because nobody took ownership of making it actually happen", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 12,
+      "type": "select",
+      "text": "Your instinct for solving problems is:",
+      "options": [
+        { "text": "Find the human story or emotional insight that unlocks it", "archetype": "storyteller" },
+        { "text": "Understand the strategic dynamics and competitive context", "archetype": "strategist" },
+        { "text": "Look for data patterns that reveal the real issue", "archetype": "scientist" },
+        { "text": "Work out who needs to do what, remove the blockers, and get things moving", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 13,
+      "type": "select",
+      "text": "When making important marketing decisions, you are MOST influenced by:",
+      "options": [
+        { "text": "Intuitive sense of what will resonate emotionally with the audience", "archetype": "storyteller" },
+        { "text": "Strategic analysis of competitive dynamics and market positioning", "archetype": "strategist" },
+        { "text": "Data and empirical evidence from testing and measurement", "archetype": "scientist" },
+        { "text": "What's realistic given the team, the timeline, and the resources we actually have", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 14,
+      "type": "select",
+      "text": "You feel MOST confident in a decision when:",
+      "options": [
+        { "text": "You intuitively know it will connect emotionally with people", "archetype": "storyteller" },
+        { "text": "You've thought through the strategic implications thoroughly", "archetype": "strategist" },
+        { "text": "You have data that validates the approach", "archetype": "scientist" },
+        { "text": "You know exactly who's delivering what and that the team can actually pull it off", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 15,
+      "type": "select",
+      "text": "When you have free time to think about marketing, you naturally gravitate toward:",
+      "options": [
+        { "text": "Imagining creative concepts and narrative possibilities", "archetype": "storyteller" },
+        { "text": "Thinking about strategic positioning and competitive moves", "archetype": "strategist" },
+        { "text": "Analysing performance patterns and optimisation opportunities", "archetype": "scientist" },
+        { "text": "Figuring out how to make things run better. Smoother handoffs, clearer ownership, fewer bottlenecks", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 16,
+      "type": "select",
+      "text": "When thinking about how to improve marketing, you most naturally focus on:",
+      "options": [
+        { "text": "Making our narrative and creative more compelling", "archetype": "storyteller" },
+        { "text": "Sharpening our strategic positioning and differentiation", "archetype": "strategist" },
+        { "text": "Optimising performance through better measurement and testing", "archetype": "scientist" },
+        { "text": "Getting the team better organised. Clearer roles, better tools, fewer things falling through the cracks", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 17,
+      "type": "select",
+      "text": "You're MOST inspired by marketing examples that show:",
+      "options": [
+        { "text": "Brilliant creative that made people stop scrolling and actually feel something", "archetype": "storyteller" },
+        { "text": "Smart positioning that completely changed how a brand was perceived", "archetype": "strategist" },
+        { "text": "Data-driven decisions that turned a struggling campaign into a success story", "archetype": "scientist" },
+        { "text": "A team that delivered something ambitious on time, on budget, and made it look easy", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 18,
+      "type": "select",
+      "text": "When forced to choose between marketing approaches, you typically prioritise:",
+      "options": [
+        { "text": "Creative impact and emotional connection over other considerations", "archetype": "storyteller" },
+        { "text": "Strategic soundness and competitive advantage over other factors", "archetype": "strategist" },
+        { "text": "Data-backed proof and measurable results over other elements", "archetype": "scientist" },
+        { "text": "Deliverability. Can we actually get this done well with the people and time we have?", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 19,
+      "type": "select",
+      "text": "Think of your single most fulfilling professional moment. It primarily involved:",
+      "options": [
+        { "text": "Creating something that resonated deeply with an audience", "archetype": "storyteller" },
+        { "text": "Developing a strategic insight that changed everything", "archetype": "strategist" },
+        { "text": "Discovering a key insight in data that proved your hypothesis", "archetype": "scientist" },
+        { "text": "Bringing a team together to deliver something everyone said couldn't be done", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 20,
+      "type": "select",
+      "text": "Early in your career, before you specialised into specific roles, you were MOST naturally drawn to:",
+      "options": [
+        { "text": "Anything involving creativity, writing, designing, or storytelling", "archetype": "storyteller" },
+        { "text": "Understanding business strategy and competitive dynamics", "archetype": "strategist" },
+        { "text": "Working with data, metrics, and analytical problem-solving", "archetype": "scientist" },
+        { "text": "Being the one who organised things. The group project leader, the person who made things happen", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 21,
+      "type": "select",
+      "text": "You've experienced 'flow state' (completely absorbed, time flies) MOST often when:",
+      "options": [
+        { "text": "Creating content, developing narratives, or doing creative work", "archetype": "storyteller" },
+        { "text": "Thinking through strategic problems and positioning challenges", "archetype": "strategist" },
+        { "text": "Analysing data, running tests, or optimising performance", "archetype": "scientist" },
+        { "text": "Running a complex project. Keeping all the plates spinning and the team aligned", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 22,
+      "type": "select",
+      "text": "The professional recognition that meant MOST to you was when someone said:",
+      "options": [
+        { "text": "Your creative work is inspiring and emotionally powerful", "archetype": "storyteller" },
+        { "text": "Your strategic thinking changed how we compete", "archetype": "strategist" },
+        { "text": "Your analytical insights drove our best decisions", "archetype": "scientist" },
+        { "text": "We couldn't have pulled this off without you holding it all together", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 23,
+      "type": "select",
+      "text": "Your proudest professional accomplishment was:",
+      "options": [
+        { "text": "Creating work that emotionally moved thousands of people", "archetype": "storyteller" },
+        { "text": "Developing a strategic approach that repositioned the business", "archetype": "strategist" },
+        { "text": "Proving a hypothesis that drove major business decisions", "archetype": "scientist" },
+        { "text": "Delivering a project everyone thought was impossible. On time, with a team that trusted you", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 24,
+      "type": "select",
+      "text": "If money, title, and career progression didn't matter at all, you would spend your days:",
+      "options": [
+        { "text": "Creating. Writing, designing, developing narratives and brand stories", "archetype": "storyteller" },
+        { "text": "Strategising. Advising on positioning, competitive strategy, and vision", "archetype": "strategist" },
+        { "text": "Analysing. Discovering insights in data and optimising performance", "archetype": "scientist" },
+        { "text": "Running things. Leading teams, managing complex projects, being the person who makes it all come together", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 25,
+      "type": "percentage",
+      "text": "What percentage of your current work time is spent on each type of activity? (Must total 100%):",
+      "options": [
+        { "id": "A", "text": "Creative, content, and storytelling work (developing narratives, brand, messaging)", "archetype": "storyteller" },
+        { "id": "B", "text": "Strategic work (positioning, planning, competitive analysis, frameworks)", "archetype": "strategist" },
+        { "id": "C", "text": "Analytical work (data analysis, testing, measurement, optimisation)", "archetype": "scientist" },
+        { "id": "D", "text": "Execution work (project management, team coordination, stakeholder management, delivery)", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 26,
+      "type": "select",
+      "text": "Which ONE statement best describes your PRIMARY role responsibility:",
+      "options": [
+        { "text": "Creating compelling content, brand narratives, and customer-facing creative", "archetype": "storyteller" },
+        { "text": "Developing strategy, positioning, and competitive frameworks", "archetype": "strategist" },
+        { "text": "Analysing performance data, testing, and optimisation", "archetype": "scientist" },
+        { "text": "Managing delivery. Projects, people, timelines, and making sure things get done", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 27,
+      "type": "select",
+      "text": "Which activity do you do MOST FREQUENTLY in your day-to-day work:",
+      "options": [
+        { "text": "Creating content, developing creative, writing, designing", "archetype": "storyteller" },
+        { "text": "Strategic planning, competitive analysis, positioning work", "archetype": "strategist" },
+        { "text": "Working with data, analysing metrics, running tests", "archetype": "scientist" },
+        { "text": "Coordinating people, managing timelines, chasing deliverables, running meetings", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 28,
+      "type": "select",
+      "text": "Your current role MOST requires expertise in:",
+      "options": [
+        { "text": "Storytelling, creative development, brand building, communication", "archetype": "storyteller" },
+        { "text": "Strategic thinking, competitive analysis, positioning, planning", "archetype": "strategist" },
+        { "text": "Data analysis, statistical methods, testing, measurement", "archetype": "scientist" },
+        { "text": "Project leadership, stakeholder management, team coordination, getting things across the line", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 29,
+      "type": "select",
+      "text": "You MOST frequently interact with:",
+      "options": [
+        { "text": "Creative teams, agencies, brand and content stakeholders", "archetype": "storyteller" },
+        { "text": "Executive leadership, strategy teams, competitive intel", "archetype": "strategist" },
+        { "text": "Data and analytics teams, performance marketing, growth teams", "archetype": "scientist" },
+        { "text": "Everyone. You're the one connecting project teams, stakeholders, and external partners", "archetype": "builder" }
+      ]
+    },
+    {
+      "number": 30,
+      "type": "select",
+      "text": "If you read your actual job description, it PRIMARILY emphasises:",
+      "options": [
+        { "text": "Creative excellence and storytelling capabilities", "archetype": "storyteller" },
+        { "text": "Strategic thinking and competitive positioning", "archetype": "strategist" },
+        { "text": "Analytical rigour and data-driven decision making", "archetype": "scientist" },
+        { "text": "Delivery, coordination, and making sure marketing actually ships", "archetype": "builder" }
+      ]
+    }
+  ],
+  "sectionBreaks": {
+    "6": "You're doing great. So far we're looking at what energises you versus what drains you.\n\nThat Storyteller whose brain was fried by 4pm because they'd spent all day fixing automations? Or the Builder who blitzed through the operational work but felt completely wasted?\n\nWe're mapping your version of that.",
+    "12": "Halfway there. Now we're looking at your instincts. The things you do before you even think about it.\n\nThese aren't learned behaviours. They're hardwired.\n\nThe Strategist who can't help but see competitive implications in everything. The Scientist who instinctively asks 'but what does the data say?' before opinions.\n\nWhat's your automatic response?",
+    "18": "Nearly there. This last section is the most important.\n\nWe're going to access the version of you that existed before years of role conditioning reshaped how you work.\n\nBefore you learned to say you loved data when you didn't. Before you stopped admitting you found operational work draining. Before the job changed you.\n\nWho were you then?",
+    "24": "Now for the uncomfortable bit.\n\nThe next 6 questions are about your actual working life. Not what you wish it was, but what it is.\n\nBe honest, even if it's depressing. The bigger the gap between this section and the last one, the more we can help."
+  }
+}

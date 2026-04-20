@@ -1,38 +1,39 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { supabase } from '../../lib/supabase';
 
 export default function BookOptIn({ source }) {
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('idle') // idle | submitting | done | error
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | submitting | done | error
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    if (!email.trim()) return
+    e.preventDefault();
+    if (!email.trim()) return;
 
-    setStatus('submitting')
+    setStatus('submitting');
     try {
-      // Plain insert for now — upsert via Netlify Function comes in Stage 6.
-      // Duplicate emails will hit the unique constraint and land in the catch.
-      const { createClient } = await import('@supabase/supabase-js')
-      const supabase = createClient(
-        import.meta.env.VITE_SUPABASE_URL,
-        import.meta.env.VITE_SUPABASE_ANON_KEY
-      )
+      if (!supabase) {
+        // No Supabase configured, just show success for development
+        setStatus('done');
+        return;
+      }
+
+      // Plain insert for now. Upsert via Netlify Function comes in Stage 6.
       const { error } = await supabase
         .from('book_subscribers')
-        .insert({ email: email.trim(), source })
+        .insert({ email: email.trim(), source });
 
       if (error) {
-        // Unique constraint violation = already subscribed — treat as success
+        // Unique constraint violation = already subscribed, treat as success
         if (error.code === '23505') {
-          setStatus('done')
+          setStatus('done');
         } else {
-          throw error
+          throw error;
         }
       } else {
-        setStatus('done')
+        setStatus('done');
       }
     } catch {
-      setStatus('error')
+      setStatus('error');
     }
   }
 
@@ -41,7 +42,7 @@ export default function BookOptIn({ source }) {
       <p className="text-sm text-muse-teal font-medium">
         You're on the list. We'll let you know.
       </p>
-    )
+    );
   }
 
   return (
@@ -63,11 +64,11 @@ export default function BookOptIn({ source }) {
         disabled={status === 'submitting'}
         className="text-sm px-4 py-2 bg-muse-teal text-white rounded-md hover:bg-muse-teal-dark transition-colors whitespace-nowrap disabled:opacity-60"
       >
-        {status === 'submitting' ? 'Saving…' : "Tell me when the book's out"}
+        {status === 'submitting' ? 'Saving...' : "Tell me when the book's out"}
       </button>
       {status === 'error' && (
         <p className="text-sm text-storyteller">Something went wrong. Try again.</p>
       )}
     </form>
-  )
+  );
 }

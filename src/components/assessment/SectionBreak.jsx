@@ -25,9 +25,10 @@ export default function SectionBreak({ text, onContinue, questionNumber }) {
         </div>
         <button
           onClick={onContinue}
-          className="mt-12 px-10 py-4 bg-white text-near-black font-medium rounded-lg hover:bg-white/90 transition-colors text-lg"
+          className="group inline-flex items-center gap-2 mt-12 px-12 py-5 bg-white text-near-black font-heading font-semibold text-lg rounded-xl hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200"
         >
           Continue
+          <span className="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>
         </button>
       </div>
     </div>

@@ -281,13 +281,14 @@ export default function Assessment() {
           <button
             onClick={handleNext}
             disabled={!isAnswerValid()}
-            className={`px-8 py-3 rounded-lg font-medium transition-all duration-200 ${
+            className={`group inline-flex items-center gap-2 px-10 py-4 rounded-xl font-heading font-semibold text-lg transition-all duration-200 ${
               isAnswerValid()
-                ? 'bg-muse-teal text-white hover:bg-muse-teal-dark shadow-sm'
+                ? 'bg-muse-teal text-off-white hover:bg-muse-teal-dark hover:-translate-y-0.5 hover:shadow-lg'
                 : 'bg-warm-gray text-mid-gray cursor-not-allowed'
             }`}
           >
             {currentQuestion === 30 ? 'Continue' : 'Next'}
+            <span className={`inline-block transition-transform duration-200 ${isAnswerValid() ? 'group-hover:translate-x-1' : ''}`} aria-hidden="true">→</span>
           </button>
         </div>
       </div>

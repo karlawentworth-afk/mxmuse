@@ -108,9 +108,10 @@ export default function InfoForm({ onSubmit, isSubmitting }) {
         <button
           type="submit"
           disabled={!isValid || isSubmitting}
-          className="w-full py-4 bg-muse-teal text-white font-medium text-lg rounded-xl hover:bg-muse-teal-dark transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed mt-2 shadow-sm"
+          className="group w-full inline-flex items-center justify-center gap-2 py-5 bg-muse-teal text-off-white font-heading font-semibold text-xl rounded-xl hover:bg-muse-teal-dark hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none mt-2"
         >
           {isSubmitting ? 'Generating your profile...' : 'See my results'}
+          {!isSubmitting && <span className="inline-block transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">→</span>}
         </button>
       </form>
     </div>

@@ -4,7 +4,7 @@ const ARCHETYPES = [
   {
     key: 'storyteller',
     name: 'Storyteller',
-    emoji: '🎨',
+    emoji: '🦊',
     hex: '#C4553A',
     strapline: "It's 2pm and you haven't created a single thing today…",
     howFeels:
@@ -21,9 +21,9 @@ const ARCHETYPES = [
   {
     key: 'strategist',
     name: 'Strategist',
-    emoji: '♟️',
+    emoji: '🧠',
     hex: '#2C3E6B',
-    strapline: "It's 2pm and you're still reacting to everyone else's priorities…",
+    strapline: "Another day, another reactive firefight.",
     howFeels:
       "You had a plan for this quarter. It was good — clear objectives, sensible sequencing, measurable outcomes. That was six weeks ago. Since then you've pivoted twice, absorbed two 'urgent' requests from sales, and spent most of your time justifying the strategy rather than executing it.",
     whatTheyDo:
@@ -40,7 +40,7 @@ const ARCHETYPES = [
     name: 'Scientist',
     emoji: '🔬',
     hex: '#7B4DAA',
-    strapline: "It's 2pm and nobody's looked at the data you prepared…",
+    strapline: "Decisions getting made without a shred of data.",
     howFeels:
       "You built the dashboard. You ran the analysis. You found the insight that should change how the team allocates budget next quarter. It's sitting in a slide deck that nobody's opened. Meanwhile, someone just made a six-figure campaign decision based on a hunch and a competitor screenshot.",
     whatTheyDo:
@@ -55,9 +55,9 @@ const ARCHETYPES = [
   {
     key: 'builder',
     name: 'Builder',
-    emoji: '⚙️',
+    emoji: '🔧',
     hex: '#2A9D8F',
-    strapline: "It's 2pm and you've fixed three things that shouldn't have broken…",
+    strapline: "Everyone wants the thing shipped. No one wants to build it.",
     howFeels:
       "The automation broke again. The CMS update created a formatting issue on mobile. Someone needs the landing page changed before tomorrow's launch. You fix all of it — quickly, competently, invisibly. Nobody notices when it works. Everyone notices when it doesn't.",
     whatTheyDo:

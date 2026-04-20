@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0D7377"/>
-  <text x="16" y="22" font-family="Georgia, serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">M</text>
+  <!-- Simplified MX Muse mark for favicon: navy background with teal diagonal -->
+  <rect width="32" height="32" rx="4" fill="#3D5A6E"/>
+  <path d="M6 24 L16 8 L26 24" stroke="#8FBCB5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
 </svg>

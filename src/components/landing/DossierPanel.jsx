@@ -20,8 +20,8 @@ export default function DossierPanel({ archetype, reduceMotion }) {
       setRuleWidth(100);
       setStep(0);
     }, 50);
-    const t1 = setTimeout(() => setStep(1), 400);
-    const t2 = setTimeout(() => setStep(2), 600);
+    const t1 = setTimeout(() => setStep(1), 500);
+    const t2 = setTimeout(() => setStep(2), 650);
     const t3 = setTimeout(() => setStep(3), 800);
     const t4 = setTimeout(() => setStep(4), 1000);
     const t5 = setTimeout(() => setStep(5), 1200);
@@ -33,72 +33,93 @@ export default function DossierPanel({ archetype, reduceMotion }) {
     };
   }, [archetype.key, reduceMotion]);
 
+  const show = (s) => reduceMotion || step >= s;
   const fadeStyle = (s) =>
     reduceMotion
       ? {}
       : {
           opacity: step >= s ? 1 : 0,
           transform: step >= s ? 'translateY(0)' : 'translateY(6px)',
-          transition: 'opacity 350ms cubic-bezier(0.16, 1, 0.3, 1), transform 350ms cubic-bezier(0.16, 1, 0.3, 1)',
+          transition: 'opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
         };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 mt-0">
-      <div className="bg-card-white rounded-b-2xl px-8 md:px-14 lg:px-16 py-12 md:py-16">
+    <div className="bg-off-white">
+      <div className="max-w-3xl mx-auto px-8 md:px-16 py-16 md:py-24">
         {/* Top rule - 2px, archetype colour */}
         <div
-          className="h-[2px] rounded-full"
+          className="h-[2px] ease-out"
           style={{
             backgroundColor: archetype.hex,
             width: reduceMotion ? '100%' : `${ruleWidth}%`,
-            transition: 'width 450ms cubic-bezier(0.16, 1, 0.3, 1)',
+            transition: 'width 500ms cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         />
 
-        {/* Archetype name */}
+        {/* File label - small, quiet, positioned above the name */}
         <div style={fadeStyle(1)} className="mt-8">
-          <h3
-            className="text-[3rem] md:text-[3.5rem] font-bold text-navy"
-            style={{ lineHeight: 1.1 }}
+          <span
+            className="text-[10px] font-medium tracking-[0.2em] uppercase"
+            style={{ color: archetype.hex }}
           >
-            {archetype.name}
-          </h3>
+            {archetype.fileLabel}
+          </span>
         </div>
 
-        {/* Tagline */}
-        <div style={fadeStyle(2)} className="mt-3 mb-12">
-          <p className="text-xl md:text-2xl font-light italic text-mid-gray leading-snug">
+        {/* Archetype name - the focal point */}
+        <div style={fadeStyle(2)} className="mt-3">
+          <h2
+            className="text-5xl md:text-6xl lg:text-7xl font-heading font-semibold"
+            style={{
+              color: archetype.hex,
+              lineHeight: 1.05,
+              fontVariationSettings: "'opsz' 144",
+            }}
+          >
+            {archetype.name}
+          </h2>
+        </div>
+
+        {/* Tagline - editorial italic, subordinate to name */}
+        <div style={fadeStyle(3)} className="mt-4 mb-16">
+          <p
+            className="text-xl md:text-2xl font-heading italic text-near-black/50"
+            style={{
+              lineHeight: 1.3,
+              fontWeight: 500,
+              letterSpacing: '0.01em',
+            }}
+          >
             {archetype.tagline}
           </p>
         </div>
 
-        {/* Content - constrained width */}
+        {/* Content column - constrained for readability */}
         <div className="max-w-[680px]">
           {archetype.sections.map((section, i) => (
-            <div key={i} style={fadeStyle(3 + i)}>
-              {i > 0 && <div className="border-t border-warm-gray/60 mt-10 mb-10" />}
+            <div key={i} style={fadeStyle(4 + i)}>
+              {i > 0 && <div className="border-t border-warm-gray/50 mt-12 mb-12" />}
               <p
-                className="text-[12px] font-semibold tracking-[0.15em] uppercase mb-4"
+                className="text-[11px] font-medium tracking-[0.15em] uppercase mb-4"
                 style={{ color: archetype.hex }}
               >
                 {section.label}
               </p>
               {section.type === 'checklist' ? (
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {section.items.map((item, j) => (
                     <div key={j} className="flex items-baseline gap-3">
                       <span
-                        className="text-sm shrink-0"
-                        style={{ color: item.checked ? archetype.hex : '#c8c5be' }}
+                        className="text-[15px] shrink-0 relative top-[1px]"
+                        style={{ color: item.checked ? archetype.hex : '#C8C5BE' }}
                       >
                         {item.checked ? '\u2713' : '\u2610'}
                       </span>
-                      <span
-                        className={`text-[15px] ${
-                          item.checked
-                            ? 'text-mid-gray line-through decoration-warm-gray'
-                            : 'text-navy font-semibold'
-                        }`}
+                      <span className={`text-[16px] font-body ${
+                        item.checked
+                          ? 'text-near-black/45 line-through decoration-warm-gray'
+                          : 'text-near-black font-medium'
+                      }`}
                         style={{ lineHeight: 1.55 }}
                       >
                         {item.text}
@@ -108,8 +129,8 @@ export default function DossierPanel({ archetype, reduceMotion }) {
                 </div>
               ) : (
                 <p
-                  className="text-[15px] text-navy/80 font-light"
-                  style={{ lineHeight: 1.6 }}
+                  className="text-[16px] text-near-black/85"
+                  style={{ lineHeight: 1.55 }}
                 >
                   {section.text}
                 </p>

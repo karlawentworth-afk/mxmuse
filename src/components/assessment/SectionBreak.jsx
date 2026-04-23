@@ -1,14 +1,14 @@
 // Section break colours keyed by question number
 const BREAK_COLOURS = {
-  '6':  { bg: '#c87d5e', label: 'Energy and instinct' },
-  '12': { bg: '#3d5066', label: 'Your instincts' },
-  '18': { bg: '#7a6a9e', label: 'Who you really are' },
-  '24': { bg: '#6ba89d', label: 'Your actual role' },
+  '6':  { bg: '#C4553A', label: 'Energy and instinct' },
+  '12': { bg: '#2C3E6B', label: 'Your instincts' },
+  '18': { bg: '#7B4DAA', label: 'Who you really are' },
+  '24': { bg: '#2A9D8F', label: 'Your actual role' },
 };
 
 export default function SectionBreak({ text, onContinue, questionNumber }) {
   const paragraphs = text.split('\n\n');
-  const config = BREAK_COLOURS[String(questionNumber)] || { bg: '#3d7680', label: '' };
+  const config = BREAK_COLOURS[String(questionNumber)] || { bg: '#0D7377', label: '' };
 
   return (
     <div

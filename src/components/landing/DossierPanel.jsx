@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const STEPS = 7; // rule, label, name, tagline, section1, section2, section3, section4 = 8 but we index 0-7
+const STEPS = 7;
 
 export default function DossierPanel({ archetype, reduceMotion }) {
   const [step, setStep] = useState(-1);
@@ -13,23 +13,16 @@ export default function DossierPanel({ archetype, reduceMotion }) {
       return;
     }
 
-    // Reset on mount (new panel)
     setStep(-1);
     setRuleWidth(0);
 
-    // Step 0: rule draws in
     const t0 = setTimeout(() => {
       setRuleWidth(100);
       setStep(0);
     }, 50);
-
-    // Step 1: label fades up (after rule: 0.3s + 0.15s)
     const t1 = setTimeout(() => setStep(1), 500);
-    // Step 2: name
     const t2 = setTimeout(() => setStep(2), 650);
-    // Step 3: tagline
     const t3 = setTimeout(() => setStep(3), 800);
-    // Step 4-7: four sections, 0.2s apart
     const t4 = setTimeout(() => setStep(4), 1000);
     const t5 = setTimeout(() => setStep(5), 1200);
     const t6 = setTimeout(() => setStep(6), 1400);
@@ -41,85 +34,110 @@ export default function DossierPanel({ archetype, reduceMotion }) {
   }, [archetype.key, reduceMotion]);
 
   const show = (s) => reduceMotion || step >= s;
-  const fadeClass = (s) =>
+  const fadeStyle = (s) =>
     reduceMotion
-      ? ''
-      : `transition-all duration-300 ${step >= s ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`;
+      ? {}
+      : {
+          opacity: step >= s ? 1 : 0,
+          transform: step >= s ? 'translateY(0)' : 'translateY(6px)',
+          transition: 'opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+        };
 
   return (
     <div className="bg-off-white">
-      <div className="max-w-4xl mx-auto px-6 py-10 md:py-16">
-        {/* Top rule */}
+      <div className="max-w-3xl mx-auto px-8 md:px-16 py-16 md:py-24">
+        {/* Top rule - 2px, archetype colour */}
         <div
-          className="h-[3px] transition-all duration-300 ease-out"
+          className="h-[2px] ease-out"
           style={{
             backgroundColor: archetype.hex,
             width: reduceMotion ? '100%' : `${ruleWidth}%`,
+            transition: 'width 500ms cubic-bezier(0.16, 1, 0.3, 1)',
           }}
         />
 
-        {/* File label */}
-        <div className={`mt-5 ${fadeClass(1)}`}>
+        {/* File label - small, quiet, positioned above the name */}
+        <div style={fadeStyle(1)} className="mt-8">
           <span
-            className="text-xs font-semibold tracking-[0.2em] uppercase"
+            className="text-[10px] font-medium tracking-[0.2em] uppercase"
             style={{ color: archetype.hex }}
           >
             {archetype.fileLabel}
           </span>
         </div>
 
-        {/* Archetype name */}
-        <div className={`mt-4 ${fadeClass(2)}`}>
+        {/* Archetype name - the focal point */}
+        <div style={fadeStyle(2)} className="mt-3">
           <h2
-            className="text-5xl md:text-6xl lg:text-7xl font-heading font-semibold leading-none"
-            style={{ color: archetype.hex }}
+            className="text-5xl md:text-6xl lg:text-7xl font-heading font-semibold"
+            style={{
+              color: archetype.hex,
+              lineHeight: 1.05,
+              fontVariationSettings: "'opsz' 144",
+            }}
           >
             {archetype.name}
           </h2>
         </div>
 
-        {/* Tagline */}
-        <div className={`mt-5 mb-10 md:mb-14 ${fadeClass(3)}`}>
-          <p className="text-xl md:text-2xl font-heading italic text-near-black/60 leading-snug">
+        {/* Tagline - editorial italic, subordinate to name */}
+        <div style={fadeStyle(3)} className="mt-4 mb-16">
+          <p
+            className="text-xl md:text-2xl font-heading italic text-near-black/50"
+            style={{
+              lineHeight: 1.3,
+              fontWeight: 500,
+              letterSpacing: '0.01em',
+            }}
+          >
             {archetype.tagline}
           </p>
         </div>
 
-        {/* Four sections */}
-        {archetype.sections.map((section, i) => (
-          <div key={i} className={fadeClass(4 + i)}>
-            {i > 0 && <div className="border-t border-warm-gray/60 my-8 md:my-10" />}
-            <p
-              className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-4"
-              style={{ color: archetype.hex }}
-            >
-              {section.label}
-            </p>
-            {section.type === 'checklist' ? (
-              <div className="space-y-2.5">
-                {section.items.map((item, j) => (
-                  <div key={j} className="flex items-start gap-3">
-                    <span
-                      className="text-lg leading-relaxed shrink-0"
-                      style={{ color: item.checked ? archetype.hex : '#B8B5AE' }}
-                    >
-                      {item.checked ? '☑' : '☐'}
-                    </span>
-                    <span className={`text-[17px] leading-relaxed ${
-                      item.checked ? 'text-near-black/50' : 'text-near-black font-medium'
-                    }`}>
-                      {item.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-[17px] leading-[1.65] text-near-black/85">
-                {section.text}
+        {/* Content column - constrained for readability */}
+        <div className="max-w-[680px]">
+          {archetype.sections.map((section, i) => (
+            <div key={i} style={fadeStyle(4 + i)}>
+              {i > 0 && <div className="border-t border-warm-gray/50 mt-12 mb-12" />}
+              <p
+                className="text-[11px] font-medium tracking-[0.15em] uppercase mb-4"
+                style={{ color: archetype.hex }}
+              >
+                {section.label}
               </p>
-            )}
-          </div>
-        ))}
+              {section.type === 'checklist' ? (
+                <div className="space-y-3">
+                  {section.items.map((item, j) => (
+                    <div key={j} className="flex items-baseline gap-3">
+                      <span
+                        className="text-[15px] shrink-0 relative top-[1px]"
+                        style={{ color: item.checked ? archetype.hex : '#C8C5BE' }}
+                      >
+                        {item.checked ? '\u2713' : '\u2610'}
+                      </span>
+                      <span className={`text-[16px] font-body ${
+                        item.checked
+                          ? 'text-near-black/45 line-through decoration-warm-gray'
+                          : 'text-near-black font-medium'
+                      }`}
+                        style={{ lineHeight: 1.55 }}
+                      >
+                        {item.text}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p
+                  className="text-[16px] text-near-black/85"
+                  style={{ lineHeight: 1.55 }}
+                >
+                  {section.text}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

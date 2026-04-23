@@ -5,8 +5,7 @@ const ARCHETYPES = [
   {
     key: 'storyteller',
     name: 'Storyteller',
-    hex: '#C4553A',
-    fileLabel: 'File 01 \u2014 Storyteller',
+    hex: '#c87d5e',
     tagline: 'The one who joined marketing for the craft.',
     sections: [
       {
@@ -42,8 +41,7 @@ const ARCHETYPES = [
   {
     key: 'strategist',
     name: 'Strategist',
-    hex: '#2C3E6B',
-    fileLabel: 'File 02 \u2014 Strategist',
+    hex: '#3d5066',
     tagline: 'The one who sees the whole board.',
     sections: [
       {
@@ -79,8 +77,7 @@ const ARCHETYPES = [
   {
     key: 'scientist',
     name: 'Scientist',
-    hex: '#7B4DAA',
-    fileLabel: 'File 03 \u2014 Scientist',
+    hex: '#7a6a9e',
     tagline: 'The one who trusts the numbers over the noise.',
     sections: [
       {
@@ -116,8 +113,7 @@ const ARCHETYPES = [
   {
     key: 'builder',
     name: 'Builder',
-    hex: '#2A9D8F',
-    fileLabel: 'File 04 \u2014 Builder',
+    hex: '#6ba89d',
     tagline: 'The one who makes the whole thing actually work.',
     sections: [
       {
@@ -132,7 +128,7 @@ const ARCHETYPES = [
           { text: 'Fix automation that broke overnight', checked: true },
           { text: 'Troubleshoot CMS formatting issue on mobile', checked: true },
           { text: 'Unblock designer waiting on asset specs', checked: true },
-          { text: 'Migrate landing page before tomorrow\'s launch', checked: true },
+          { text: "Migrate landing page before tomorrow's launch", checked: true },
           { text: 'Re-scope sprint after scope change from product', checked: true },
           { text: 'Update stakeholder on revised timeline', checked: true },
           { text: 'Start the new project everyone keeps asking about', checked: false },
@@ -168,9 +164,14 @@ export default function ArchetypeTabs() {
 
   return (
     <section className="py-16 md:py-24">
-      {/* Tab bar */}
-      <div className="max-w-3xl mx-auto px-8 md:px-16">
-        <div className="flex" role="tablist">
+      <div className="max-w-4xl mx-auto px-6">
+        {/* Section heading */}
+        <h2 className="text-3xl md:text-4xl font-bold text-navy mb-10">
+          Which one sounds like yours?
+        </h2>
+
+        {/* Tab bar */}
+        <div className="flex rounded-xl overflow-hidden" role="tablist">
           {ARCHETYPES.map((a) => {
             const isActive = active === a.key;
             return (
@@ -179,8 +180,8 @@ export default function ArchetypeTabs() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActive(a.key)}
-                className={`flex-1 py-4 text-[13px] font-medium tracking-[0.08em] uppercase ${
-                  isActive ? 'text-white' : 'text-mid-gray hover:text-near-black bg-off-white'
+                className={`flex-1 py-4 text-[13px] font-semibold tracking-[0.06em] uppercase ${
+                  isActive ? 'text-white' : 'text-mid-gray hover:text-navy bg-card-white'
                 }`}
                 style={{
                   backgroundColor: isActive ? a.hex : undefined,
@@ -194,7 +195,7 @@ export default function ArchetypeTabs() {
         </div>
       </div>
 
-      {/* Dossier panel */}
+      {/* Archetype panel */}
       <DossierPanel
         key={active}
         archetype={archetype}

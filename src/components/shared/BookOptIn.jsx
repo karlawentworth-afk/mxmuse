@@ -57,12 +57,12 @@ export default function BookOptIn({ source }) {
         placeholder="you@example.com"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="text-sm px-3 py-2 border border-warm-gray rounded-md bg-white text-near-black placeholder:text-mid-gray focus:outline-none focus:border-muse-teal flex-1 min-w-0"
+        className="text-sm px-3 py-2 border border-warm-gray rounded-lg bg-white text-navy placeholder:text-mid-gray focus:outline-none focus:border-muse-teal flex-1 min-w-0"
       />
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="text-sm px-4 py-2 bg-muse-teal text-white rounded-md hover:bg-muse-teal-dark transition-colors whitespace-nowrap disabled:opacity-60"
+        className="text-sm px-4 py-2 bg-muse-teal text-white rounded-lg hover:bg-muse-teal-dark transition-colors whitespace-nowrap disabled:opacity-60"
       >
         {status === 'submitting' ? 'Saving...' : "Tell me when the book's out"}
       </button>

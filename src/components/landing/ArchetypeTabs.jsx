@@ -169,7 +169,7 @@ export default function ArchetypeTabs() {
   return (
     <section className="py-16 md:py-24">
       {/* Tab bar */}
-      <div className="max-w-3xl mx-auto px-8 md:px-16">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="flex" role="tablist">
           {ARCHETYPES.map((a) => {
             const isActive = active === a.key;
@@ -179,13 +179,10 @@ export default function ArchetypeTabs() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActive(a.key)}
-                className={`flex-1 py-4 text-[13px] font-medium tracking-[0.08em] uppercase ${
+                className={`flex-1 py-4 md:py-5 text-sm md:text-base font-semibold tracking-wide uppercase transition-all duration-300 ${
                   isActive ? 'text-white' : 'text-mid-gray hover:text-near-black bg-off-white'
                 }`}
-                style={{
-                  backgroundColor: isActive ? a.hex : undefined,
-                  transition: 'background-color 200ms ease, color 200ms ease',
-                }}
+                style={isActive ? { backgroundColor: a.hex } : undefined}
               >
                 {a.name}
               </button>
